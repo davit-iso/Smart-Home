@@ -1,0 +1,215 @@
+🏠 Smart Home Automation Simulator
+
+🧠 Core Concept
+You will design a modular simulation of a smart home, where a variety of devices (e.g., lights, thermostats, door locks, sensors) coordinate through a central controller called the Hub. Each device must decide when and how to act using interchangeable behavior modules. Your goal is to:
+Decouple device-specific logic from the simulation core.
+
+
+Ensure centralized, indirect communication between devices.
+
+
+Make the system easily extensible—you should be able to plug in new devices or behaviors with minimal effort and without modifying existing code.
+
+
+This project is an exercise in clean architecture and behavioral decoupling. You are encouraged to reason about the right abstractions and design approaches. This task implicitly relies on behavioral design patterns part of the task is discovering them.
+
+✅ Requirements
+📦 Device Abstraction
+Define a common abstract interface (e.g., Device) for all smart-home gadgets.
+
+
+Provide at least three concrete device types, such as:
+
+
+Light
+
+
+Thermostat
+
+
+DoorLock
+
+
+(Optional) Add a MotionSensor for bonus interaction.
+
+
+🧭 Central Hub
+Implement a Hub class that:
+
+
+Registers devices.
+
+
+Sends commands (e.g. “turn off all lights”).
+
+
+Receives and broadcasts events (e.g. “motion detected in hallway”).
+
+
+Devices must not talk to each other directly—all interaction must happen via the Hub.
+
+
+🧩 Interchangeable Behavior Modules
+Devices should support behavior composition through pluggable modules:
+Schedulers (When to act):
+
+
+e.g., “at 7 AM”, “when motion detected”, “every hour”
+
+
+Actions (How to act):
+
+
+e.g., “gradually dim”, “instant turn on”, “lock with alarm”
+
+
+You must implement at least two distinct scheduling behaviors and two action behaviors, all swappable at runtime.
+
+
+🔁 Event Notification
+When a device changes state, it should notify the Hub.
+
+
+The Hub may:
+
+
+Log the event.
+
+
+Notify subscribed devices that may respond.
+
+
+Trigger other behaviors.
+
+
+📜 Logging Component
+All key events and actions must be recorded through a Logger interface.
+
+
+You must support at least two logger implementations:
+
+
+Console logger
+
+
+File logger
+
+
+⚙️ Extensibility
+The system must allow you to:
+
+
+Add a new device type
+
+
+Add new behavior modules (scheduler/action/loggers)
+
+
+Without modifying existing classes.
+
+
+🧪 Testing
+Provide unit tests for:
+
+
+Device registration and communication via the Hub.
+
+
+Behavior execution (both scheduler and action).
+
+
+Event propagation and logging.
+
+
+Include a working make test command that builds and runs all tests.
+
+
+💻 Language & Practices
+Use C++17 or later.
+
+
+Apply RAII and smart pointers for memory/resource management.
+
+
+Apply meaningful object-oriented design and encapsulation.
+
+
+
+🗂️ Project Structure
+Organize your project as follows:
+smart-home-simulator/
+├── include/             # Header files
+│   ├── devices/
+│   │   ├── Device.hpp
+│   │   ├── Light.hpp
+│   │   └── ...
+│   ├── hub/
+│   │   └── Hub.hpp
+│   ├── behavior/
+│   │   ├── Scheduler.hpp
+│   │   ├── Action.hpp
+│   │   └── ...
+│   └── logger/
+│       └── Logger.hpp
+│
+├── src/                 # Implementations
+│   ├── main.cpp
+│   ├── devices/
+│   ├── hub/
+│   ├── behavior/
+│   └── logger/
+│
+├── tests/               # Unit tests
+│   ├── test_main.cpp
+│   ├── test_devices.cpp
+│   └── ...
+│
+├── Makefile             # Targets: build, test, clean
+└── README.md            # Overview, build & run instructions
+
+
+🚀 Submission Process
+GitHub Repository
+
+
+Create a public GitHub repository named smart-home-simulator.
+
+
+Push your full project to the main branch, preserving your commit history.
+
+
+Commits & Tagging
+
+
+Use descriptive commit messages.
+
+
+Tag the final submission commit as v1.0.
+
+
+Pull Request (Optional)
+
+
+You may use a feature branch and open a pull request to main for clarity and feedback.
+
+
+Submit
+
+
+Share the repository URL via the class portal.
+
+
+
+💡 Final Notes
+Think carefully about how behaviors should be composed and triggered.
+
+
+Avoid tightly coupled logic—focus on modularity and interchangeability.
+
+
+You're encouraged to go beyond the basic requirements if you have time—e.g., implement a configuration system, or build a CLI interface.
+
+
+Good luck—and enjoy designing your very own smart home ecosystem!
+ Make sure it’s easy to expand and even easier to reason about.
+
