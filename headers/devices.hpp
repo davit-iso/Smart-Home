@@ -8,8 +8,8 @@ class Hub;
 class Device
 {
     protected:
-    std::string name;
     Hub* hub;
+    std::string name;
     public:
     Device(Hub* hub, std::string name) : hub(hub),name(name){};
     virtual void sendMessage() = 0;

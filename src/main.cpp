@@ -4,8 +4,10 @@
 #include "vector"
 #include <memory>
 #include "devices.hpp"
+#include <gtest/gtest.h>
 
-class Hub;
+//class Light;
+// class Hub;
 
 int main()
 {
@@ -27,3 +29,20 @@ int main()
     delete hub;
     return 0;
 }
+
+// TEST(LightTest, TurnOnOffTest) {
+//     Hub hub("hub");
+//     Light light(&hub, "Living Room");
+
+//     light.turn_on();
+//     EXPECT_TRUE(light.get_turn());
+
+//     light.turn_off();
+//     EXPECT_FALSE(light.get_turn());
+// }
+
+// int main(int argc, char **argv) {
+//     std::cout << "🚀 Запуск всех тестов...\n";
+//     ::testing::InitGoogleTest(&argc, argv);
+//     return RUN_ALL_TESTS();
+// }

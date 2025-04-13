@@ -8,24 +8,24 @@ void Hub::addDevice(std::shared_ptr<Device> dev)
     devices.push_back(dev);
 }
 
-void Hub::removeDevice(std::string name)
-{
-    for(int i = 0; i < devices.size(); ++i)
-    {
-        if(devices[i] -> get_name() == name)
-        {
-            devices.erase(devices.begin() + i);
-            std::cout<<"Device "<<name<<" was removed!"<<std::endl;
-            return;
-        }
-    }
-}
+// void Hub::removeDevice(std::string name)
+// {
+//     for(int i = 0; i < devices.size(); ++i)
+//     {
+//         if(devices[i] -> get_name() == name)
+//         {
+//             devices.erase(devices.begin() + i);
+//             std::cout<<"Device "<<name<<" was removed!"<<std::endl;
+//             return;
+//         }
+//     }
+// }
 
 void Hub::notify(std::string type, std::string name)
 {
     if(type == "Temp")
     {
-        for(int i = 0; i < devices.size(); ++i)
+        for(size_t i = 0; i < devices.size(); ++i)
         {
            if(devices[i] -> get_name() == name && std::dynamic_pointer_cast<Conditioner>(devices[i]))
            {
@@ -34,7 +34,7 @@ void Hub::notify(std::string type, std::string name)
                 break;
            }
         }
-        for(int i = 0; i < devices.size(); ++i)
+        for(size_t i = 0; i < devices.size(); ++i)
         {
             if(devices[i] -> get_name() == name && std::dynamic_pointer_cast<Thermostat>(devices[i]))
             {
@@ -46,7 +46,7 @@ void Hub::notify(std::string type, std::string name)
     }
     else if(type == "MS")
     {
-        for(int i = 0; i < devices.size(); ++i)
+        for(size_t i = 0; i < devices.size(); ++i)
         {
             if(devices[i] -> get_name() == name && std::dynamic_pointer_cast<Light>(devices[i]))
             {
@@ -67,7 +67,7 @@ void Hub::notify(std::string type, std::string name)
     }
     else if(type == "DL")
     {
-        for(int i = 0; i < devices.size(); ++i)
+        for(size_t i = 0; i < devices.size(); ++i)
         {
             if(devices[i] -> get_name() == name && std::dynamic_pointer_cast<DoorLock>(devices[i]))
             {
@@ -89,3 +89,15 @@ void Hub::notify(std::string type, std::string name)
         std::cout<<"Wrong notification!!"<<std::endl;
     }
 }
+
+// void Hub::removeDevice(std::string name)
+// {
+//     for(int i = 0; i < devices.size(); ++i)
+//     {
+//         if(devices[i] -> get_name() == name)
+//         {
+//             devices.erase(devices.begin() + i);
+//             --i;
+//         }
+//     }
+// }
